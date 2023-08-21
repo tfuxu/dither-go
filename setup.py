@@ -3,6 +3,7 @@
 
 import json
 import os
+import shutil
 import subprocess
 import sys
 
@@ -35,6 +36,9 @@ class CustomBuildExt(build_ext):
         go_env = json.loads(subprocess.check_output(["go", "env", "-json"]).decode("utf-8").strip())
 
         destination = os.path.dirname(os.path.abspath(self.get_ext_fullpath(ext.name))) + "/dither_go/bindings"
+        if os.path.isdir(destination):
+            # clean up destination in case it has existing build artifacts
+            shutil.rmtree(destination)
 
         env = {
             "PATH": bin_path,
@@ -46,12 +50,19 @@ class CustomBuildExt(build_ext):
         if sys.platform == "win32":
             env["SYSTEMROOT"] = os.environ.get("SYSTEMROOT", "")
 
+        if sys.platform == "darwin":
+            min_ver = os.environ.get("MACOSX_DEPLOYMENT_TARGET", "")
+            env["MACOSX_DEPLOYMENT_TARGET"] = min_ver
+            env["CGO_LDFLAGS"] = "-mmacosx-version-min=" + min_ver
+            env["CGO_CFLAGS"] = "-mmacosx-version-min=" + min_ver
+
         subprocess.check_call(
             [
                 "gopy",
                 "build",
                 "-no-make",
                 "-dynamic-link=True",
+                "-symbols=False",
                 "-output",
                 destination,
                 "-vm",
