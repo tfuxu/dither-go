@@ -1,0 +1,14 @@
+FROM ghcr.io/bjia56/armv7l-wheel-builder:main
+ARG PYTHON3_VERSION=9
+
+RUN go install github.com/go-python/gopy@v0.4.7 && \
+    go install golang.org/x/tools/cmd/goimports@latest
+
+RUN mkdir build
+WORKDIR build
+COPY . .
+
+RUN ./builder/armv7l_build_wheels.sh ${PYTHON3_VERSION}
+
+RUN mkdir /export && \
+    cp build3.${PYTHON3_VERSION}/wheelhouse/*.whl /export
