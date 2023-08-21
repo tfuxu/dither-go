@@ -65,7 +65,7 @@ jobs:
           package-dir: ./dither_go
         env:
           CIBW_BUILD: "cp3*_x86_64"
-          CIBW_SKIP: "cp36-* "cp37-*" *-musllinux_x86_64"
+          CIBW_SKIP: "cp36-* cp37-* *-musllinux_x86_64"
           CIBW_ARCHS: "native"
           CIBW_ENVIRONMENT: >
             PATH=$PATH:/usr/local/go/bin
@@ -103,7 +103,7 @@ jobs:
           package-dir: ./dither_go
         env:
           CIBW_BUILD: "cp3${{ matrix.python3_version }}*_aarch64"
-          CIBW_SKIP: "cp36-*  "cp37-*" *-musllinux_aarch64"
+          CIBW_SKIP: "cp36-*  cp37-* *-musllinux_aarch64"
           CIBW_ARCHS: "aarch64"
           CIBW_ENVIRONMENT: >
             PATH=$PATH:/usr/local/go/bin
@@ -194,7 +194,7 @@ jobs:
           package-dir: ./dither_go
         env:
           CIBW_BUILD: "cp3*"
-          CIBW_SKIP: "cp36-*" "cp37-*"
+          CIBW_SKIP: "cp36-* cp37-*"
           CIBW_ARCHS: "native"
           CIBW_ENVIRONMENT: >
             GOARCH=amd64
