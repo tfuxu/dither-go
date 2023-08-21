@@ -56,6 +56,10 @@ class CustomBuildExt(build_ext):
             env["CGO_LDFLAGS"] = "-mmacosx-version-min=" + min_ver
             env["CGO_CFLAGS"] = "-mmacosx-version-min=" + min_ver
 
+        if sys.platform == "linux":
+            env["CGO_LDFLAGS"] = "-I/usr/local/include"
+            env["CGO_CFLAGS"] = "-L/usr/local/lib"
+
         subprocess.check_call(
             [
                 "gopy",
