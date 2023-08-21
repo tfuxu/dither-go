@@ -70,7 +70,7 @@ jobs:
           CIBW_ENVIRONMENT: >
             PATH=$PATH:/usr/local/go/bin
             CGO_ENABLED=1
-          CIBW_BEFORE_ALL_LINUX: >
+          CIBW_BEFORE_ALL_LINUX: |
             curl -o go.tar.gz https://go.dev/dl/go1.20.7.linux-amd64.tar.gz
             tar -C /usr/local -xzf go.tar.gz
             go install github.com/go-python/gopy@v0.4.7
@@ -108,7 +108,7 @@ jobs:
           CIBW_ENVIRONMENT: >
             PATH=$PATH:/usr/local/go/bin
             CGO_ENABLED=1
-          CIBW_BEFORE_ALL_LINUX: >
+          CIBW_BEFORE_ALL_LINUX: |
             curl -o go.tar.gz https://go.dev/dl/go1.20.7.linux-amd64.tar.gz
             tar -C /usr/local -xzf go.tar.gz
             go install github.com/go-python/gopy@v0.4.7
@@ -152,7 +152,7 @@ jobs:
           load: true
 
       - name: Extract output
-        run: >
+        run: |
           docker run -v /tmp/output:/host armv7l:latest bash -c "cp /export/* /host/"
           tar -zcvf /tmp/output.tar.gz /tmp/output
 
@@ -177,7 +177,7 @@ jobs:
 
       # TODO: Make a fork of this fork to update to 0.4.7
       - name: Install gopy
-        run: >
+        run: |
           cd $env:TEMP
           git clone https://github.com/bjia56/gopy
           cd gopy
