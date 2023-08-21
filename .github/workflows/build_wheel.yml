@@ -62,7 +62,7 @@ jobs:
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.15.0
         with:
-          package-dir: ./dither_go
+          package-dir: .
         env:
           CIBW_BUILD: "cp3*_x86_64"
           CIBW_SKIP: "cp36-* cp37-* *-musllinux_x86_64"
@@ -100,7 +100,7 @@ jobs:
       - name: Build 3.${{ matrix.python3_version }} wheels
         uses: pypa/cibuildwheel@v2.15.0
         with:
-          package-dir: ./dither_go
+          package-dir: .
         env:
           CIBW_BUILD: "cp3${{ matrix.python3_version }}*_aarch64"
           CIBW_SKIP: "cp36-*  cp37-* *-musllinux_aarch64"
@@ -191,7 +191,7 @@ jobs:
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.15.0
         with:
-          package-dir: ./dither_go
+          package-dir: .
         env:
           CIBW_BUILD: "cp3*"
           CIBW_SKIP: "cp36-* cp37-*"

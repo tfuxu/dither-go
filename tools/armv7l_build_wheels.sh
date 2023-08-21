@@ -15,7 +15,7 @@ test_wheel() (
     PY_VER=$1
     cd build$PY_VER
     pip$PY_VER install *armv7l.whl
-    python$PY_VER -c "import scrypted_arlo_go; print(scrypted_arlo_go)"
+    python$PY_VER -c "import dither_go; print(dither_go)"
 )
 
 repair_wheel() (

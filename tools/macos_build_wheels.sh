@@ -30,7 +30,7 @@ build_wheel() (
     ln -sf /usr/local/opt/python@3.$PY_MINOR/bin/python3.$PY_MINOR  /usr/local/bin/python_for_build
     /usr/local/bin/python_for_build --version
     /usr/local/bin/python_for_build -m pip install cibuildwheel==2.15.0 pybindgen
-    CIBW_BUILD="cp3$PY_MINOR-*" /usr/local/bin/python_for_build -m cibuildwheel --output-dir wheelhouse scrypted_arlo_go
+    CIBW_BUILD="cp3$PY_MINOR-*" /usr/local/bin/python_for_build -m cibuildwheel --output-dir wheelhouse dither_go
 )
 
 test_wheel() (
@@ -39,7 +39,7 @@ test_wheel() (
     then
         ln -sf /usr/local/opt/python@3.$PY_MINOR/bin/python3.$PY_MINOR  /usr/local/bin/python_for_build
         /usr/local/bin/python_for_build -m pip install wheelhouse/*cp3$PY_MINOR*.whl
-        /usr/local/bin/python_for_build -c "import scrypted_arlo_go; print(scrypted_arlo_go)"
+        /usr/local/bin/python_for_build -c "import dither_go; print(dither_go)"
     fi
 )
 
