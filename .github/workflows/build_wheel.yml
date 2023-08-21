@@ -71,7 +71,7 @@ jobs:
             PATH=$PATH:/usr/local/go/bin
             CGO_ENABLED=1
           CIBW_BEFORE_ALL_LINUX: |
-            curl -o go.tar.gz https://go.dev/dl/go1.20.7.linux-amd64.tar.gz
+            curl -o go.tar.gz https://dl.google.com/go/go1.20.7.linux-amd64.tar.gz
             tar -C /usr/local -xzf go.tar.gz
             go install github.com/go-python/gopy@v0.4.7
             go install golang.org/x/tools/cmd/goimports@latest
@@ -109,7 +109,7 @@ jobs:
             PATH=$PATH:/usr/local/go/bin
             CGO_ENABLED=1
           CIBW_BEFORE_ALL_LINUX: |
-            curl -o go.tar.gz https://go.dev/dl/go1.20.7.linux-amd64.tar.gz
+            curl -o go.tar.gz https://dl.google.com/go/go1.20.7.linux-amd64.tar.gz
             tar -C /usr/local -xzf go.tar.gz
             go install github.com/go-python/gopy@v0.4.7
             go install golang.org/x/tools/cmd/goimports@latest

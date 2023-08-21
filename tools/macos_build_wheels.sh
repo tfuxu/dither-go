@@ -30,7 +30,7 @@ build_wheel() (
     ln -sf /usr/local/opt/python@3.$PY_MINOR/bin/python3.$PY_MINOR  /usr/local/bin/python_for_build
     /usr/local/bin/python_for_build --version
     /usr/local/bin/python_for_build -m pip install cibuildwheel==2.15.0 pybindgen
-    CIBW_BUILD="cp3$PY_MINOR-*" /usr/local/bin/python_for_build -m cibuildwheel --output-dir wheelhouse dither_go
+    CIBW_BUILD="cp3$PY_MINOR-*" /usr/local/bin/python_for_build -m cibuildwheel --output-dir wheelhouse .
 )
 
 test_wheel() (

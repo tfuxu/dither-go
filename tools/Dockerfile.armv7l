@@ -8,7 +8,7 @@ RUN mkdir build
 WORKDIR build
 COPY . .
 
-RUN ./builder/armv7l_build_wheels.sh ${PYTHON3_VERSION}
+RUN ./tools/armv7l_build_wheels.sh ${PYTHON3_VERSION}
 
 RUN mkdir /export && \
     cp build3.${PYTHON3_VERSION}/wheelhouse/*.whl /export
