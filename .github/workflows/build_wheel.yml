@@ -68,6 +68,7 @@ jobs:
           CIBW_SKIP: "cp36-* cp37-* *-musllinux_x86_64"
           CIBW_ARCHS: "native"
           CIBW_ENVIRONMENT: >
+            LD_LIBRARY_PATH=/usr/local/include
             PATH=$PATH:/usr/local/go/bin
             CGO_ENABLED=1
           CIBW_BEFORE_ALL_LINUX: |
