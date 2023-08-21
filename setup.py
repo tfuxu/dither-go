@@ -57,8 +57,8 @@ class CustomBuildExt(build_ext):
             env["CGO_CFLAGS"] = "-mmacosx-version-min=" + min_ver
 
         if sys.platform == "linux":
-            env["CGO_LDFLAGS"] = "-I/usr/local/include"
-            env["CGO_CFLAGS"] = "-L/usr/local/lib"
+            env["CGO_LDFLAGS"] = "-L/usr/local/lib"
+            env["CGO_CFLAGS"] = "-I/usr/local/include"
 
         subprocess.check_call(
             [
