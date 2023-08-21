@@ -15,12 +15,12 @@ if sys.platform == 'darwin':
     # PYTHON_BINARY_PATH is setting explicitly for 310 and 311, see build_wheel.yml
     # on macos PYTHON_BINARY_PATH must be python bin installed from python.org
     PYTHON_BINARY = os.getenv("PYTHON_BINARY_PATH", sys.executable)
-    if PYTHON_BINARY == sys.executable:
-        subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'pybindgen'])
+    '''if PYTHON_BINARY == sys.executable:
+        subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'pybindgen'])'''
 else:
     # linux & windows
     PYTHON_BINARY = sys.executable
-    subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'pybindgen'])
+    #subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'pybindgen'])
 
 
 def _generate_path_with_gopath() -> str:
