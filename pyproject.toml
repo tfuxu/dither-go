@@ -18,3 +18,6 @@ classifiers = [
 [project.urls]
 "Homepage" = "https://github.com/tfuxu/dither-go"
 "Bug Tracker" = "https://github.com/tfuxu/dither-go/issues"
+
+[tool.setuptools]
+packages = ["dither_go", "dither_go.bindings"]
