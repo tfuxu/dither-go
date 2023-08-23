@@ -4,12 +4,11 @@ ARG PYTHON3_VERSION=9
 RUN go install github.com/go-python/gopy@v0.4.7 && \
     go install golang.org/x/tools/cmd/goimports@latest
 
-RUN ./tools/linux_compile_libwebp.sh
-
 RUN mkdir build
 WORKDIR build
 COPY . .
 
+RUN ./tools/linux_compile_libwebp.sh
 RUN ./tools/armv7l_build_wheels.sh ${PYTHON3_VERSION}
 
 RUN mkdir /export && \
