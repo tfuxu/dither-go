@@ -17,10 +17,12 @@ if sys.platform == 'darwin':
     PYTHON_BINARY = os.getenv("PYTHON_BINARY_PATH", sys.executable)
     if PYTHON_BINARY == sys.executable:
         subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'pybindgen'])
-else:
-    # linux & windows
+elif sys.platform == 'linux':
     PYTHON_BINARY = sys.executable
     subprocess.check_call(['pip', 'install', 'pybindgen'])
+else:
+    PYTHON_BINARY = sys.executable
+    subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'pybindgen'])
 
 
 def _generate_path_with_gopath() -> str:
