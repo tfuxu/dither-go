@@ -6,26 +6,20 @@ set -e
 
 build_wheel() (
     PY_VER=$1
-    mkdir build$PY_VER
-    cd build$PY_VER
-    echo build$PY_VER Directory Listing
-    ls -al
-    echo build Directory Listing
-    ls -al ..
     pip$PY_VER install build
     python$PY_VER -m build ..
 )
 
 test_wheel() (
     PY_VER=$1
-    cd build$PY_VER
+    cd dist
     pip$PY_VER install *armv7l.whl
     python$PY_VER -c "import dither_go; print(dither_go)"
 )
 
 repair_wheel() (
     PY_VER=$1
-    cd build$PY_VER
+    cd dist
     auditwheel repair *armv7l.whl
 )
 
