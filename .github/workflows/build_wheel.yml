@@ -198,8 +198,7 @@ jobs:
           tar -xzf libwebp.tar.gz
           cd libwebp-1.3.1
           nmake /f Makefile.vc CFG=release-dynamic RTLIBCFG=dynamic OBJDIR=output
-          dir output\release-dynamic\x64\include
-          dir output\release-dynamic\x64\lib
+          xcopy ./output C:/Users/runneradmin/Documents/ /y
 
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.15.0
@@ -213,8 +212,8 @@ jobs:
           CIBW_ENVIRONMENT: >
             GOARCH=amd64
             CGO_ENABLED=1
-            CGO_CFLAGS=-I\output\release-dynamic\x64\include
-            CGO_LDFLAGS=-L\output\release-dynamic\x64\lib
+            CGO_CFLAGS=-IC:/Users/runneradmin/Documents/output/release-dynamic/x64/include
+            CGO_LDFLAGS=-LC:/Users/runneradmin/Documents/output/release-dynamic/x64/lib
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
