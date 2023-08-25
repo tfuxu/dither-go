@@ -38,6 +38,7 @@ jobs:
         run: ./tools/macos_build_wheels.sh
         env:
           CIBW_ARCHS: ${{ matrix.arch_cibw_go[0] }}
+          CIBW_BUILD_FRONTEND: "build"
           PYTHON_BINARY_PATH: /usr/local/bin/python_for_build
           CIBW_ENVIRONMENT: >
             PATH=$PATH:/usr/local/go/bin
@@ -105,6 +106,7 @@ jobs:
           package-dir: .
         env:
           CIBW_BUILD: "cp3${{ matrix.python3_version }}*_aarch64"
+          CIBW_BUILD_FRONTEND: "build"
           CIBW_SKIP: "cp36-*  cp37-* *-musllinux_aarch64"
           CIBW_ARCHS: "aarch64"
           CIBW_ENVIRONMENT: >
@@ -149,6 +151,7 @@ jobs:
           file: ./tools/Dockerfile.armv7l
           build-args: |
             PYTHON3_VERSION=${{ matrix.python3_version }}
+            CIBW_BUILD_FRONTEND=build
           push: false
           platforms: linux/armhf
           tags: armv7l:latest
@@ -166,7 +169,7 @@ jobs:
           path: /tmp/output/*.whl
 
   build_windows:
-    #if: false
+    if: false # TODO: Modify to use MinGW instead
     name: Windows x86_64
     runs-on: windows-latest
 
@@ -198,7 +201,6 @@ jobs:
           tar -xzf libwebp.tar.gz
           cd libwebp-1.3.1
           nmake /f Makefile.vc CFG=release-dynamic RTLIBCFG=dynamic OBJDIR=output
-          xcopy .\output C:\Users\runneradmin\Documents\ /y
 
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.15.0
@@ -212,8 +214,6 @@ jobs:
           CIBW_ENVIRONMENT: >
             GOARCH=amd64
             CGO_ENABLED=1
-            CGO_CFLAGS=-IC:/Users/runneradmin/Documents/output/release-dynamic/x64/include
-            CGO_LDFLAGS=-LC:/Users/runneradmin/Documents/output/release-dynamic/x64/lib
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
@@ -227,7 +227,7 @@ jobs:
     - build_linux_x86_64
     - build_linux_arm64
     - build_linux_armv7l
-    - build_windows
+    #- build_windows
     runs-on: ubuntu-latest
     steps:
     - run: |
