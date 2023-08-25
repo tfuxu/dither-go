@@ -203,6 +203,8 @@ jobs:
           CIBW_ENVIRONMENT: >
             GOARCH=amd64
             CGO_ENABLED=1
+          CIBW_BEFORE_ALL_WINDOWS: |
+            $PSVersionTable.PSVersion
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
