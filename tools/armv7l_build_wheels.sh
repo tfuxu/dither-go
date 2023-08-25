@@ -7,7 +7,7 @@ set -e
 build_wheel() (
     PY_VER=$1
     pip$PY_VER install build
-    python$PY_VER -m build ..
+    python$PY_VER -m build
 )
 
 test_wheel() (
