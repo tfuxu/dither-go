@@ -198,7 +198,9 @@ jobs:
           tar -xzf libwebp.tar.gz
           cd libwebp-1.3.1
           nmake /f Makefile.vc CFG=release-dynamic RTLIBCFG=static OBJDIR=output
-          dir output\release-dynamic\x64
+          dir output\release-dynamic\x64\include
+          dir output\release-dynamic\x64\lib
+          dir output\release-dynamic\x64\obj
 
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.15.0
