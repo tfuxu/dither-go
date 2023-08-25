@@ -65,6 +65,7 @@ jobs:
           package-dir: .
         env:
           CIBW_BUILD: "cp3*_x86_64"
+          CIBW_BUILD_FRONTEND: "build"
           CIBW_SKIP: "cp36-* cp37-* *-musllinux_x86_64"
           CIBW_ARCHS: "native"
           CIBW_ENVIRONMENT: >
@@ -196,6 +197,7 @@ jobs:
           package-dir: .
         env:
           CIBW_BUILD: "cp3*"
+          CIBW_BUILD_FRONTEND: "build"
           CIBW_SKIP: "cp36-* cp37-*"
           CIBW_ARCHS: "native"
           CIBW_ENVIRONMENT: >
