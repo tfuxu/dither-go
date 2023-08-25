@@ -8,7 +8,7 @@ build_wheel() (
     PY_VER=$1
     mkdir build$PY_VER
     cd build$PY_VER
-    pip$PY_VER wheel ..
+    python$PY_VER -m build ..
 )
 
 test_wheel() (

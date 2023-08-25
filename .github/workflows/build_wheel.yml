@@ -151,7 +151,6 @@ jobs:
           file: ./tools/Dockerfile.armv7l
           build-args: |
             PYTHON3_VERSION=${{ matrix.python3_version }}
-            CIBW_BUILD_FRONTEND=build
           push: false
           platforms: linux/armhf
           tags: armv7l:latest

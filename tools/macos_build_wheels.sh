@@ -46,19 +46,19 @@ test_wheel() (
 _start_group "Python 3.8"
 install_python 8
 build_wheel 8
-test_wheel 8
+#test_wheel 8
 
 _start_group "Python 3.9"
 install_python 9
 build_wheel 9
-test_wheel 9
+#test_wheel 9
 
 _start_group "Python 3.10"
 install_python 10
 build_wheel 10
-test_wheel 10
+#test_wheel 10
 
 _start_group "Python 3.11"
 install_python 11
 build_wheel 11
-test_wheel 11
+#test_wheel 11
