@@ -213,6 +213,8 @@ jobs:
           CIBW_ENVIRONMENT: >
             GOARCH=amd64
             CGO_ENABLED=1
+            CGO_CFLAGS=-I\output\release-dynamic\x64\include
+            CGO_LDFLAGS=-L\output\release-dynamic\x64\lib
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
