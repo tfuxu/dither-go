@@ -8,6 +8,10 @@ build_wheel() (
     PY_VER=$1
     mkdir build$PY_VER
     cd build$PY_VER
+    echo build$PY_VER Directory Listing
+    ls -al
+    echo build Directory Listing
+    ls -al ..
     pip$PY_VER install build
     python$PY_VER -m build ..
 )
