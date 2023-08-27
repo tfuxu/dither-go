@@ -8,6 +8,7 @@ RUN mkdir build
 WORKDIR build
 COPY . .
 
+#RUN ./tools/linux_compile_libwebp.sh
 RUN ./tools/armv7l_build_wheels.sh ${PYTHON3_VERSION}
 
 RUN mkdir /export && \
