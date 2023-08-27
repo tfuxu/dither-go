@@ -1,8 +1,8 @@
-name: Build Wheels (Testing)
+name: Build Wheels
 
 on:
   push:
-    branches: ["fix-workflow"]
+    branches: ["master"]
     paths: ["dither_go/**", ".github/workflows/build_wheel.yml"]
   pull_request:
     paths: ["dither_go/**", ".github/workflows/build_wheel.yml"]
