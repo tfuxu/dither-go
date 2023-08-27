@@ -126,7 +126,7 @@ jobs:
           path: ./wheelhouse/*.whl
 
   build_linux_armv7l:
-    #if: false
+    if: false # Disable for now; It can't find source files for some reason
     name: Linux armv7l
     runs-on: ubuntu-latest
     strategy:
