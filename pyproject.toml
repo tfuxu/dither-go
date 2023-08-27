@@ -1,13 +1,13 @@
 [build-system]
-requires = ["setuptools>=61.0", "wheel", "pybindgen"]
+requires = ["setuptools>=61.0", "wheel", "build"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "dither-go"
 version = "0.1.0"
 authors = [{name = "tfuxu"}]
-description = "A small example package"
-readme = "README.md"
+description = "A fast and the most correct image dithering library"
+readme = "README_PyPI.md"
 requires-python = ">=3.8"
 classifiers = [
     "Programming Language :: Python :: 3",
