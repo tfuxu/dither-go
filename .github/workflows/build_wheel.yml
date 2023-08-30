@@ -10,6 +10,19 @@ on:
   workflow_call:
 
 jobs:
+  build_sdist:
+    name: Source distribution
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build sdist
+        run: pipx run build --sdist
+
+      - uses: actions/upload-artifact@v3
+        with:
+          path: dist/*.tar.gz
+
   build_macos:
     #if: false
     name: MacOS ${{ matrix.arch_cibw_go[0] }}
@@ -222,6 +235,7 @@ jobs:
 
   all_builds_passed:
     needs:
+    - build_sdist
     - build_macos
     - build_linux_x86_64
     - build_linux_arm64
