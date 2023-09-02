@@ -1,6 +1,9 @@
 # Copyright 2023, tfuxu <https://github.com/tfuxu>
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+from typing import List, Union
+
+from dither_go.utils.color import ColorUtils
 from dither_go.bindings import dither, dither_go
 
 
@@ -62,6 +65,10 @@ def new_ditherer(palette):
     If the palette is None, then None will be returned.
 
     .. note:: All palette colors should be opaque.
+
+    :param palette: A color palette created using ``create_palette`` function.
+
+    :returns: A new ``Ditherer`` Golang object with provided color palette.
     """
 
     # TODO: Use inherited Dither class instead
@@ -69,13 +76,18 @@ def new_ditherer(palette):
 
 
 # ---- Library Functions ---
-def round_clamp(i: float) -> int:
+def round_clamp(number: float) -> int:
     """
     Clamps the number and rounds it, rounding ties to the nearest even number.
     This should be used if you're writing your own PixelMapper.
+
+    :param number: An floating-point number.
+    :type number: :class:`float`
+
+    :rtype: :class:`int`
     """
 
-    return dither.RoundClamp(i)
+    return dither.RoundClamp(number)
 
 def error_diffusion_strength(edm, strength: float):
     """
@@ -99,12 +111,17 @@ def error_diffusion_strength(edm, strength: float):
 # ---- Helper Functions ---
 def open_image(path: str):
     """
-    Opens image file and decodes its contents using image.Decode function.
-
-    :raises Exception: If there is a failure in i/o operations or image decoding.
+    Opens image file and decodes its contents using ``image.Decode`` Golang function.
 
     .. note:: Check ``format_matrix.md`` document for information about
     supported image formats.
+
+    :param path: An path to the location of the image.
+    :type path: :class:`str`
+
+    :raises Exception: If there is a failure in I/O operations or image decoding.
+
+    :returns: An ``image.Image`` Golang object containing image data.
     """
 
     try:
@@ -119,10 +136,18 @@ def save_image(img_data, output_path: str, encode_format: str) -> None:
     Saves provided image data in specified output path and
     encodes it to the supported format.
 
-    :raises Exception: If there is a failure in i/o operations or image encoding.
-
     .. note:: Check ``format_matrix.md`` document for information about
     supported image formats and their names used in ``encode_format``.
+
+    :param output_path: An path to the output location of the image.
+    :type output_path: :class:`str`
+
+    :param encode_format: A name of the image format used in encoding.
+    :type encode_format: :class:`str`
+
+    :raises Exception: If there is a failure in I/O operations or image encoding.
+
+    :rtype: :class:`None`
     """
 
     try:
@@ -130,22 +155,26 @@ def save_image(img_data, output_path: str, encode_format: str) -> None:
     except Exception as exc:
         raise exc
 
-def create_palette(*args):
+def create_palette(color_list: List[Union[str, List[int]]]):
     """
-    Creates a list of `color.RGBA` objects.
+    Creates a new color palette for use in dithered images.
 
-    .. warning:: Always create `color.RGBA` values with `RGBA()` constructor
-    to avoid accessing invalid memory addresses.
-    """
+    It supports mixing hexadecimal color codes (in short, normal and extended forms),
+    with lists of RGB color channels (with and without alpha channel provided).
 
-    return dither_go.CreatePalette(*args)
+    :param color_list: A list with hex color values and/or lists of RGBA channel
+    value representations written using integers.
+    :type color_list: List[Union[str, List[int]]]
 
-def RGBA(red: int, green: int, blue: int, alpha: int):
-    """
-    Creates new ``color.RGBA`` object with provided (red, green, blue, alpha)
-    color channels.
+    :raises InvalidColorError: When there is an error during color parsing/conversion.
 
-    .. note:: Values higher than 255 will result in 'Out of range' exceptions
+    :returns: An list of ``color.RGBA`` Golang objects for use in image dithering.
     """
 
-    return dither_go.CreateRGBA(red, green, blue, alpha)
+    color_utils = ColorUtils()
+
+    palette = []
+    for value in color_list:
+        palette.append(color_utils.color_to_rgba(value))
+
+    return dither_go.CreatePalette(*palette)
