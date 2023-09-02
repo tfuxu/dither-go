@@ -20,4 +20,4 @@ classifiers = [
 "Bug Tracker" = "https://github.com/tfuxu/dither-go/issues"
 
 [tool.setuptools]
-packages = ["dither_go", "dither_go.bindings"]
+packages = ["dither_go", "dither_go.bindings", "dither_go.utils"]

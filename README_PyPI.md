@@ -52,11 +52,11 @@ except Exception as e:
     print(f"Couldn't load the requested image. Exception: {e}")
 
 # This is the color palette used in output image
-palette = dither_go.create_palette(
-    RGBA(0, 0, 0, 255),
-    RGBA(255, 255, 255, 255),
+palette = dither_go.create_palette([
+    [0, 0, 0],
+    [255, 255, 255],
     # You can put here any color you want
-)
+])
 
 # Create new `Ditherer` object using a constructor
 ditherer = dither_go.new_ditherer(palette)
