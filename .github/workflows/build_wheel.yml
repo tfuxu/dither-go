@@ -3,11 +3,9 @@ name: Build Wheels
 on:
   push:
     branches: ["master"]
-    paths: ["dither_go/**", ".github/workflows/build_wheel.yml"]
-    paths-ignore: "dither_go/bindings/**"
+    paths: ["dither_go/**", "!dither_go/bindings/**", ".github/workflows/build_wheel.yml"]
   pull_request:
-    paths: ["dither_go/**", ".github/workflows/build_wheel.yml"]
-    paths-ignore: "dither_go/bindings/**"
+    paths: ["dither_go/**", "!dither_go/bindings/**", ".github/workflows/build_wheel.yml"]
   workflow_dispatch:
   workflow_call:
 
