@@ -1,4 +1,4 @@
-<img src="data/images/david_dithered.png" align="left" height="96px" vspace="10px">
+<img src="https://raw.githubusercontent.com/tfuxu/dither-go/master/data/images/david_dithered.png" align="left" height="96px" vspace="10px">
 
 # Dither Go!
 
