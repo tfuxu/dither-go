@@ -6,6 +6,8 @@ on:
     paths: [".github/workflows/build_wheel.yml", "dither_go/**", "!dither_go/bindings/**"]
   pull_request:
     paths: [".github/workflows/build_wheel.yml", "dither_go/**", "!dither_go/bindings/**"]
+  release:
+    types: [published]
   workflow_dispatch:
   workflow_call:
 
