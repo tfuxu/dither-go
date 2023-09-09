@@ -146,6 +146,7 @@ If you want support for a format which isn't currently on that list, submit a fe
 
 - If the palette is grayscale, the input image should be converted to grayscale first to get accurate results.
 - All the `[][]uint` matrices are supposed to be applied with `PixelMapperFromMatrix`.
+- You can generate a list of available dither matrices with their display names using `MatrixUtils().generate_matrices_list()` method.
 
 ## Notes:
 

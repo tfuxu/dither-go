@@ -2,7 +2,7 @@
 
 ### Fundamentals
 
-- [ ] Finalize README and make a project description
+- [x] Finalize README and make a project description
 - [x] Write functions to load and save image files
 - [x] Write helper for creating color.RGBA objects, to avoid nil dereferencing
 - [x] Write helper for creating palette slice, as Gopy doesn't have abstraction for slice of objects
@@ -17,7 +17,8 @@
 - [ ] ~~Support for image manipulation (ideally support native Python libraries, like PIL)~~ There isn't any sufficient way to transport binary data between Go and Python yet. Library users will simply have to apply additional effects before dithering
 
 ### Multi-arch support:
-- [ ] Be able to generate wheels for multiple architectures and platforms
+- [x] Be able to generate wheels for multiple architectures and platforms
+- [ ] Add support for Windows
 
 <details>
 <summary>Here's how this will be structured:</summary>

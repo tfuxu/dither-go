@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- `MatrixUtils` helper class with `generate_matrices_list()` method
+- Docstrings for `ErrorDiffusers` and `OrderedDitherers` dataclass fields
+
 ## [0.2.1] - 2023-09-04
 
 Nothing has changed, this is just a PyPI release.
