@@ -1,6 +1,9 @@
 <img src="data/images/david_dithered.png" align="left" height="96px" vspace="10px">
 
 # Dither Go!
+[![PyPI - Version](https://img.shields.io/pypi/v/dither-go)](https://pypi.org/project/dither-go/)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/dither-go)
+[![Build Wheels](https://github.com/tfuxu/dither-go/actions/workflows/build_wheel.yml/badge.svg)](https://github.com/tfuxu/dither-go/actions/workflows/build_wheel.yml)
 
 Dither Go! is a fast image processing library, making use of `dither` Golang library to provide the most correct image dithering.
 
