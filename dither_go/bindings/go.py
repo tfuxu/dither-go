@@ -1736,7 +1736,7 @@ class Palette(GoClass):
 		return self
 	def __next__(self):
 		if self.index < len(self):
-			rv = _dither_go.color_Palette_elem(self.handle, self.index)
+			rv = go.color_Color(handle=_dither_go.color_Palette_elem(self.handle, self.index))
 			self.index = self.index + 1
 			return rv
 		raise StopIteration

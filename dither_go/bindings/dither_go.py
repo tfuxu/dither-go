@@ -100,7 +100,7 @@ class Slice_color_Color(go.GoClass):
 		return self
 	def __next__(self):
 		if self.index < len(self):
-			rv = _dither_go.Slice_color_Color_elem(self.handle, self.index)
+			rv = go.color_Color(handle=_dither_go.Slice_color_Color_elem(self.handle, self.index))
 			self.index = self.index + 1
 			return rv
 		raise StopIteration
@@ -138,6 +138,13 @@ class Slice_color_Color(go.GoClass):
 
 
 # ---- Functions ---
+def SaveImage(img_data, output_path, encode_format):
+	"""SaveImage(object img_data, str output_path, str encode_format) str
+	
+	SaveImage saves provided image data in specified output path and
+	encodes it to the supported format.
+	"""
+	return _dither_go.dither_go_SaveImage(img_data.handle, output_path, encode_format)
 def CreatePalette(*args):
 	"""CreatePalette([]object colors) []object
 	
@@ -166,12 +173,5 @@ def OpenImage(path):
 	using image.Decode function.
 	"""
 	return go.image_Image(handle=_dither_go.dither_go_OpenImage(path))
-def SaveImage(img_data, output_path, encode_format):
-	"""SaveImage(object img_data, str output_path, str encode_format) str
-	
-	SaveImage saves provided image data in specified output path and
-	encodes it to the supported format.
-	"""
-	return _dither_go.dither_go_SaveImage(img_data.handle, output_path, encode_format)
 
 

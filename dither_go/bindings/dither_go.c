@@ -2220,6 +2220,29 @@ PyObject * _wrap__dither_go_Slice_color_Color_append(PyObject * PYBINDGEN_UNUSED
 
 
 PyObject *
+_wrap__dither_go_dither_go_SaveImage(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    char *retval;
+    int64_t img_data;
+    char *output_path;
+    char *encode_format;
+    const char *keywords[] = {"img_data", "output_path", "encode_format", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "Lss", (char **) keywords, &img_data, &output_path, &encode_format)) {
+        return NULL;
+    }
+    retval = dither_go_SaveImage(img_data, output_path, encode_format);
+    if (PyErr_Occurred()) {
+        return NULL;
+    }
+    py_retval = Py_BuildValue((char *) "s", retval);
+    return py_retval;
+}
+PyObject * _wrap__dither_go_dither_go_SaveImage(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
 _wrap__dither_go_dither_go_CreatePalette(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
 {
     PyObject *py_retval;
@@ -2299,29 +2322,6 @@ _wrap__dither_go_dither_go_OpenImage(PyObject * PYBINDGEN_UNUSED(dummy), PyObjec
     return py_retval;
 }
 PyObject * _wrap__dither_go_dither_go_OpenImage(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__dither_go_dither_go_SaveImage(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    char *retval;
-    int64_t img_data;
-    char *output_path;
-    char *encode_format;
-    const char *keywords[] = {"img_data", "output_path", "encode_format", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "Lss", (char **) keywords, &img_data, &output_path, &encode_format)) {
-        return NULL;
-    }
-    retval = dither_go_SaveImage(img_data, output_path, encode_format);
-    if (PyErr_Occurred()) {
-        return NULL;
-    }
-    py_retval = Py_BuildValue((char *) "s", retval);
-    return py_retval;
-}
-PyObject * _wrap__dither_go_dither_go_SaveImage(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
 
 
 PyObject *
@@ -4188,10 +4188,10 @@ static PyMethodDef _dither_go_functions[] = {
     {(char *) "Slice_color_Color_subslice", (PyCFunction) _wrap__dither_go_Slice_color_Color_subslice, METH_KEYWORDS|METH_VARARGS, "Slice_color_Color_subslice(handle, st, ed)\n\ntype: handle: int64_t\ntype: st: int\ntype: ed: int" },
     {(char *) "Slice_color_Color_set", (PyCFunction) _wrap__dither_go_Slice_color_Color_set, METH_KEYWORDS|METH_VARARGS, "Slice_color_Color_set(handle, idx, value)\n\ntype: handle: int64_t\ntype: idx: int\ntype: value: int64_t" },
     {(char *) "Slice_color_Color_append", (PyCFunction) _wrap__dither_go_Slice_color_Color_append, METH_KEYWORDS|METH_VARARGS, "Slice_color_Color_append(handle, value)\n\ntype: handle: int64_t\ntype: value: int64_t" },
+    {(char *) "dither_go_SaveImage", (PyCFunction) _wrap__dither_go_dither_go_SaveImage, METH_KEYWORDS|METH_VARARGS, "dither_go_SaveImage(img_data, output_path, encode_format)\n\ntype: img_data: int64_t\ntype: output_path: char *\ntype: encode_format: char *" },
     {(char *) "dither_go_CreatePalette", (PyCFunction) _wrap__dither_go_dither_go_CreatePalette, METH_KEYWORDS|METH_VARARGS, "dither_go_CreatePalette(colors)\n\ntype: colors: int64_t" },
     {(char *) "dither_go_CreateRGBA", (PyCFunction) _wrap__dither_go_dither_go_CreateRGBA, METH_KEYWORDS|METH_VARARGS, "dither_go_CreateRGBA(r, g, b, a)\n\ntype: r: uint8_t\ntype: g: uint8_t\ntype: b: uint8_t\ntype: a: uint8_t" },
     {(char *) "dither_go_OpenImage", (PyCFunction) _wrap__dither_go_dither_go_OpenImage, METH_KEYWORDS|METH_VARARGS, "dither_go_OpenImage(path)\n\ntype: path: char *" },
-    {(char *) "dither_go_SaveImage", (PyCFunction) _wrap__dither_go_dither_go_SaveImage, METH_KEYWORDS|METH_VARARGS, "dither_go_SaveImage(img_data, output_path, encode_format)\n\ntype: img_data: int64_t\ntype: output_path: char *\ntype: encode_format: char *" },
     {(char *) "Slice_Slice_uint_CTor", (PyCFunction) _wrap__dither_go_Slice_Slice_uint_CTor, METH_NOARGS, "Slice_Slice_uint_CTor()\n\n" },
     {(char *) "Slice_Slice_uint_len", (PyCFunction) _wrap__dither_go_Slice_Slice_uint_len, METH_KEYWORDS|METH_VARARGS, "Slice_Slice_uint_len(handle)\n\ntype: handle: int64_t" },
     {(char *) "Slice_Slice_uint_elem", (PyCFunction) _wrap__dither_go_Slice_Slice_uint_elem, METH_KEYWORDS|METH_VARARGS, "Slice_Slice_uint_elem(handle, idx)\n\ntype: handle: int64_t\ntype: idx: int" },

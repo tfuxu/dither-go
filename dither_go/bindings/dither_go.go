@@ -1380,6 +1380,21 @@ func Slice_color_Color_append(handle CGoHandle, _vl CGoHandle) {
 
 // ---- Functions ---
 
+//export dither_go_SaveImage
+func dither_go_SaveImage(img_data CGoHandle, output_path *C.char, encode_format *C.char) *C.char {
+	_saved_thread := C.PyEval_SaveThread()
+	var __err error
+	__err = dither_go.SaveImage(ptrFromHandle_image_Image(img_data), C.GoString(output_path), C.GoString(encode_format))
+
+	C.PyEval_RestoreThread(_saved_thread)
+	if __err != nil {
+		estr := C.CString(__err.Error())
+		C.PyErr_SetString(C.PyExc_RuntimeError, estr)
+		return estr
+	}
+	return C.CString("")
+}
+
 //export dither_go_CreatePalette
 func dither_go_CreatePalette(colors CGoHandle) CGoHandle {
 	_saved_thread := C.PyEval_SaveThread()
@@ -1411,21 +1426,6 @@ func dither_go_OpenImage(path *C.char) CGoHandle {
 		return handleFromPtr_image_Image(nil)
 	}
 	return handleFromPtr_image_Image(cret)
-}
-
-//export dither_go_SaveImage
-func dither_go_SaveImage(img_data CGoHandle, output_path *C.char, encode_format *C.char) *C.char {
-	_saved_thread := C.PyEval_SaveThread()
-	var __err error
-	__err = dither_go.SaveImage(ptrFromHandle_image_Image(img_data), C.GoString(output_path), C.GoString(encode_format))
-
-	C.PyEval_RestoreThread(_saved_thread)
-	if __err != nil {
-		estr := C.CString(__err.Error())
-		C.PyErr_SetString(C.PyExc_RuntimeError, estr)
-		return estr
-	}
-	return C.CString("")
 }
 
 // ---- Package: dither ---

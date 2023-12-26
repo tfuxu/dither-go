@@ -303,10 +303,10 @@ extern long long int Slice_color_Color_elem(long long int handle, GoInt _idx);
 extern long long int Slice_color_Color_subslice(long long int handle, GoInt _st, GoInt _ed);
 extern void Slice_color_Color_set(long long int handle, GoInt _idx, long long int _vl);
 extern void Slice_color_Color_append(long long int handle, long long int _vl);
+extern char* dither_go_SaveImage(long long int img_data, char* output_path, char* encode_format);
 extern long long int dither_go_CreatePalette(long long int colors);
 extern long long int dither_go_CreateRGBA(unsigned char r, unsigned char g, unsigned char b, unsigned char a);
 extern long long int dither_go_OpenImage(char* path);
-extern char* dither_go_SaveImage(long long int img_data, char* output_path, char* encode_format);
 
 // --- wrapping slice: [][]uint ---
 //

@@ -101,7 +101,7 @@ class Slice_Slice_uint(go.GoClass):
 		return self
 	def __next__(self):
 		if self.index < len(self):
-			rv = _dither_go.Slice_Slice_uint_elem(self.handle, self.index)
+			rv = go.Slice_uint(handle=_dither_go.Slice_Slice_uint_elem(self.handle, self.index))
 			self.index = self.index + 1
 			return rv
 		raise StopIteration
@@ -1125,7 +1125,7 @@ class ErrorDiffusionMatrix(go.GoClass):
 		return self
 	def __next__(self):
 		if self.index < len(self):
-			rv = _dither_go.dither_ErrorDiffusionMatrix_elem(self.handle, self.index)
+			rv = go.Slice_float32(handle=_dither_go.dither_ErrorDiffusionMatrix_elem(self.handle, self.index))
 			self.index = self.index + 1
 			return rv
 		raise StopIteration
