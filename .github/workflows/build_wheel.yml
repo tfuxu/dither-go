@@ -253,12 +253,12 @@ jobs:
     if: github.event_name == 'release' && github.event.action == 'published'
     steps:
       - name: Get source distribution
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4.1.7
         with:
           name: source
           path: dist
       - name: Get all built distributions
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4.1.7
         with:
           name: wheels
           path: dist
