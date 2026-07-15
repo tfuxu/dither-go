@@ -6,5 +6,5 @@ require (
 	github.com/go-python/gopy v0.4.8
 	github.com/kolesa-team/go-webp v1.0.4
 	github.com/tfuxu/dither-gopy v0.2.0
-	golang.org/x/image v0.38.0
+	golang.org/x/image v0.41.0
 )
